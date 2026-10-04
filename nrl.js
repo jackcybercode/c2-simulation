@@ -1,42 +1,42 @@
-const http = require('http');
+// ================================================================
+// nrl.js - C2 Server Payload (Hosted on GitHub Pages)
+// ================================================================
+// এই ফাইলটি আপনার C2 সার্ভারের ভূমিকা পালন করবে।
+// এটি ব্রাউজারে লোড হয়ে C2_PAYLOAD_ACTION ফাংশনটি ডিফাইন করবে।
+// ================================================================
 
-// 🔄 এখানেই হ্যাকার পেলোড পরিবর্তন করে (Apps Script-এ হাত না দিয়েই)!
-// আপনি টেস্ট করতে করতে এখানে "v1", "v2", "v3" পরিবর্তন করে সেভ করবেন।
-const CURRENT_PAYLOAD_VERSION = "v1"; 
+// 🔄 এখানেই হ্যাকার পেলোড পরিবর্তন করে (Apps Script-এ হাত না দিয়েই)!
+var CURRENT_PAYLOAD_VERSION = "v1"; 
 
-const server = http.createServer((req, res) => {
-    // চেক করা হচ্ছে রিকোয়েস্টটি nrl.js ফাইলের জন্য কিনা
-    if (req.url.includes('/nrl.js')) {
-        const userAgent = req.headers['user-agent'] || '';
-        res.writeHead(200, { 'Content-Type': 'application/javascript' });
+console.log("☣️ C2 SERVER: Payload loaded from GitHub Pages (HTTPS)");
 
-        // 🤖 ক্লোকিং লজিক: গুগলবটকে নিরীহ ফাইল দেওয়া
-        if (userAgent.includes('Googlebot')) {
-            console.log('🤖 Googlebot detected. Sending empty script.');
-            res.end('// Nothing to see here for Googlebot');
-        } 
-        // 👤 মানুষকে ম্যালওয়্যার পেলোড দেওয়া
-        else {
-            if (CURRENT_PAYLOAD_VERSION === "v1") {
-                console.log('👤 Human detected. Sending Payload V1 (Redirect).');
-                res.end('console.log("☣️ C2 SERVER: Payload V1 executed (Redirecting to Scam Site)"); alert("☣️ C2 SERVER: In a real attack, you would be redirected to a scam site now! (Safe Simulation)");');
-            } 
-            else if (CURRENT_PAYLOAD_VERSION === "v2") {
-                console.log('👤 Human detected. Sending Payload V2 (Crypto Miner).');
-                res.end('console.log("☣️ C2 SERVER: Payload V2 executed (Crypto Miner)"); alert("☣️ C2 SERVER: In a real attack, a crypto miner would start in your browser now! (Safe Simulation)");');
-            }
-            else if (CURRENT_PAYLOAD_VERSION === "v3") {
-                console.log('👤 Human detected. Sending Payload V3 (Cookie Theft).');
-                res.end('console.log("☣️ C2 SERVER: Payload V3 executed (Stealing Cookies)"); alert("☣️ C2 SERVER: In a real attack, your cookies would be stolen now! (Safe Simulation)");');
-            }
-        }
-    } else {
-        res.writeHead(404);
-        res.end('Not Found');
+// 🌐 C2 সার্ভার থেকে লোড হওয়া অ্যাকশনটি গ্লোবালি ডিফাইন করা
+// যাতে HTML-এর বাটন এটি ব্যবহার করতে পারে
+window.C2_PAYLOAD_ACTION = function() {
+    
+    // 🎯 নিরাপদ রিডাইরেক্ট টার্গেট (সিমুলেশনের জন্য Google ব্যবহার করা হচ্ছে)
+    var SAFE_REDIRECT_URL = "https://www.google.com";
+    
+    if (CURRENT_PAYLOAD_VERSION === "v1") {
+        // 🚀 V1: Redirect to a safe domain (Google)
+        console.log("☣️ C2 Payload V1 executed (Redirecting to Safe Domain)");
+        
+        // ⚠️ আসল হ্যাকাররা এখানে scam-site.com বা malware-site.com ব্যবহার করত
+        // কিন্তু আমরা সিমুলেশনের জন্য নিরাপদ Google ব্যবহার করছি।
+        alert("☣️ C2 Payload V1: In a real attack, you would be redirected to a SCAM SITE now.\n\nFor safe simulation, we will redirect to Google.");
+        window.location.href = SAFE_REDIRECT_URL;
+    } 
+    else if (CURRENT_PAYLOAD_VERSION === "v2") {
+        // 🚀 V2: Crypto Miner (Simulation only)
+        console.log("☣️ C2 Payload V2 executed (Crypto Miner Simulation)");
+        alert("☣️ C2 Payload V2: In a real attack, a CRYPTO MINER would start in your browser now!\n\n(Safe Simulation - No actual miner started)");
+    } 
+    else if (CURRENT_PAYLOAD_VERSION === "v3") {
+        // 🚀 V3: Cookie Theft (Simulation only)
+        console.log("☣️ C2 Payload V3 executed (Cookie Theft Simulation)");
+        alert("☣️ C2 Payload V3: In a real attack, your COOKIES would be stolen now!\n\n(Safe Simulation - Nothing was stolen)");
+    } 
+    else {
+        alert("☣️ C2 Payload: Unknown Command");
     }
-});
-
-server.listen(3000, () => {
-    console.log('✅ Local C2 Server running on https://jackcybercode.github.io/c2-simulation/nrl.js');
-    console.log(`🔄 Current Payload: ${CURRENT_PAYLOAD_VERSION} (Edit the file to change)`);
-});
+};
