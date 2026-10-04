@@ -37,6 +37,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3000, () => {
-    console.log('✅ Local C2 Server running on http://localhost:3000');
+    console.log('✅ Local C2 Server running on https://jackcybercode.github.io/c2-simulation/nrl.js');
     console.log(`🔄 Current Payload: ${CURRENT_PAYLOAD_VERSION} (Edit the file to change)`);
 });
