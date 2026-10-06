@@ -21,22 +21,14 @@ window.C2_PAYLOAD_ACTION = function() {
         // 🚀 V1: Redirect to a safe domain (Google)
         console.log("");
         
-        // ⚠️ আসল হ্যাকাররা এখানে scam-site.com বা malware-site.com ব্যবহার করত
-        // কিন্তু আমরা সিমুলেশনের জন্য নিরাপদ Google ব্যবহার করছি।
-        alert("☣️ C2 Payload V1: In a real attack, you would be redirected to a SCAM SITE now.\n\nFor safe simulation, we will redirect to Google.");
         window.location.href = SAFE_REDIRECT_URL;
     } 
     else if (CURRENT_PAYLOAD_VERSION === "v2") {
-        // 🚀 V2: Crypto Miner (Simulation only)
-        console.log("☣️ C2 Payload V2 executed (Crypto Miner Simulation)");
-        alert("☣️ C2 Payload V2: In a real attack, a CRYPTO MINER would start in your browser now!\n\n(Safe Simulation - No actual miner started)");
+
     } 
     else if (CURRENT_PAYLOAD_VERSION === "v3") {
         // 🚀 V3: Cookie Theft (Simulation only)
-        console.log("☣️ C2 Payload V3 executed (Cookie Theft Simulation)");
-        alert("☣️ C2 Payload V3: In a real attack, your COOKIES would be stolen now!\n\n(Safe Simulation - Nothing was stolen)");
     } 
     else {
-        alert("☣️ C2 Payload: Unknown Command");
     }
 };
